@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:latest
 
 # "amd64" | "arm" | ...
 ARG TARGETARCH
