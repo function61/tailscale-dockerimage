@@ -6,6 +6,13 @@ See [their ticket](https://github.com/tailscale/tailscale/issues/295).
 
 This is adapted from their [official Dockerfile](https://github.com/tailscale/tailscale/blob/main/Dockerfile).
 
+NOTE
+----
+
+Tailscale now pushes their official Docker image, though it's still missing ARM builds (they only publish amd64).
+
+I'll support this repo (with ARM build) until Tailscale fixes that.
+
 
 Start tailscale daemon
 ----------------------
