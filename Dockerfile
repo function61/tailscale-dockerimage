@@ -9,7 +9,7 @@ ENTRYPOINT ["/usr/local/bin/tailscaled"]
 
 RUN mkdir -p /tmp/ts-install && cd /tmp/ts-install \
 	&& apk add --no-cache ca-certificates iptables iproute2 curl \
-	&& curl -fsSL -o tailscale.tar.gz "https://pkgs.tailscale.com/stable/tailscale_1.22.0_$TARGETARCH.tgz" \
+	&& curl -fsSL -o tailscale.tar.gz "https://pkgs.tailscale.com/stable/tailscale_1.34.2_$TARGETARCH.tgz" \
 	&& tar --strip-components=1 -xzf tailscale.tar.gz \
 	&& cp tailscale tailscaled /usr/local/bin/ \
 	&& rm -rf /tmp/ts-install
