@@ -6,6 +6,34 @@ See [their ticket](https://github.com/tailscale/tailscale/issues/295).
 
 This is adapted from their [official Dockerfile](https://github.com/tailscale/tailscale/blob/main/Dockerfile).
 
+DEPRECATED
+----------
+
+Tailscale has published their Docker image, and later even added multi-arch images (which was the final reason for me to support this repo).
+
+Pro-tip: here's an example `docker-compose.yml` to get some equivalence to this image:
+
+```yml
+version: '3'
+services:
+  tailscale:
+    restart: unless-stopped
+    image: tailscale/tailscale:v1.34.2
+    environment:
+    # without this, uses "--state=mem" and uses ephemeral mode
+    - TS_STATE_DIR=/var/lib/tailscale
+    - TS_SOCKET=/var/run/tailscale/tailscaled.sock
+    devices:
+    - /dev/net/tun
+    # TODO: reduce to individual caps
+    privileged: true
+    network_mode: host
+    volumes:
+    - /persist/apps/tailscale-state:/var/lib/tailscale
+    - /var/run/tailscale:/var/run/tailscale
+```
+
+
 NOTE
 ----
 
