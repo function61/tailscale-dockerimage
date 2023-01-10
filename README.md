@@ -23,6 +23,9 @@ services:
     # without this, uses "--state=mem" and uses ephemeral mode
     - TS_STATE_DIR=/var/lib/tailscale
     - TS_SOCKET=/var/run/tailscale/tailscaled.sock
+    # defaults to true. ip routes don't get installed etc. maybe Tailscale isn't designed to work in a container in this manner
+    # because we seem to be needing quite a bunch of overrides..
+    - TS_USERSPACE=false
     devices:
     - /dev/net/tun
     # TODO: reduce to individual caps
